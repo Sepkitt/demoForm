@@ -2,7 +2,8 @@
   <div class="content">
 
     <!--Image & Title-->
-    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/39be584c-4045-48b4-b129-d0be45b1a81a/dfraxsm-12ee9efb-5bd3-41ab-939e-e9fc645a1ba0.png/v1/fill/w_894,h_894,q_70,strp/ichigo_by_trini3designs_dfraxsm-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcLzM5YmU1ODRjLTQwNDUtNDhiNC1iMTI5LWQwYmU0NWIxYTgxYVwvZGZyYXhzbS0xMmVlOWVmYi01YmQzLTQxYWItOTM5ZS1lOWZjNjQ1YTFiYTAucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.PFxvirZ9uK9qRptTAqFtcjeOsd3_iO46LJA5Qbw7U0w">
+    <img
+      src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/39be584c-4045-48b4-b129-d0be45b1a81a/dfraxsm-12ee9efb-5bd3-41ab-939e-e9fc645a1ba0.png/v1/fill/w_894,h_894,q_70,strp/ichigo_by_trini3designs_dfraxsm-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcLzM5YmU1ODRjLTQwNDUtNDhiNC1iMTI5LWQwYmU0NWIxYTgxYVwvZGZyYXhzbS0xMmVlOWVmYi01YmQzLTQxYWItOTM5ZS1lOWZjNjQ1YTFiYTAucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.PFxvirZ9uK9qRptTAqFtcjeOsd3_iO46LJA5Qbw7U0w">
     <div class="text">Welcome to the loop</div>
 
     <form action="#">
@@ -11,8 +12,8 @@
         <span :class="input.icon"></span>
         <input type="text" :id="input.id" @focus="setFocusedInput(input.id)" />
 
-       
-       
+
+
       </div>
 
       <!--login & outer button-->
@@ -32,14 +33,16 @@ interface Input {
 
 
 const inputs = ref<Input[]>([
-  { id: 'inputField1', icon: 'fa fa-user',label: 'Username', focused: false },
-  { id: 'inputField2', icon: 'fa fa-lock',label: 'Password', focused: false },
+  { id: 'inputField1', icon: 'fa fa-user', label: 'Username', focused: false },
+  { id: 'inputField2', icon: 'fa fa-lock', label: 'Password', focused: false },
 
 ]);
 
 const handleMessageFromParent = (event: MessageEvent): void => {
-  console.log({event})
-  if (event.origin === 'http://localhost:3001') {
+  console.log({ event })
+  let originSrc = event.origin // this value should be changed to your projects origin
+  
+  if (event.origin === originSrc) {
     console.log('Message received from parent:', event.data);
 
     if (event.data === 'backspace') {
